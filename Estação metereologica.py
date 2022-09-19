@@ -38,7 +38,7 @@ while True:
         d.humidity()
         time.sleep(1)
         
-        atualizarSite = ("https://api.thingspeak.com/update?api_key=CEXV1A15U5AXBT44&field1={}&field2={}".format(d.temperature(),d.humidity()))              
+        atualizarSite = ("https://api.thingspeak.com/update?api_key=&field1={}&field2={}".format(d.temperature(),d.humidity()))              
      
         print("Acessando o ThingSpeak...")
         response = urequests.get(atualizarSite)
