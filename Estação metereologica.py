@@ -1,12 +1,12 @@
 from Conect_Wifi import conecta
 import machine
 import dht
-import time
 from umqtt.simple import MQTTClient
 import urequests
 
-NomeDaRede = ""
-SenhaDaRede= ""
+NomeDaRede = "Tescaro"
+SenhaDaRede= "99831215"
+KeyThingSpeak = "CEXV1A15U5AXBT44"
 
 d = dht.DHT11(machine.Pin(4))
 r = machine.Pin(2, machine.Pin.OUT)
@@ -38,7 +38,7 @@ while True:
         d.humidity()
         time.sleep(1)
         
-        atualizarSite = ("https://api.thingspeak.com/update?api_key=&field1={}&field2={}".format(d.temperature(),d.humidity()))              
+        atualizarSite = ("https://api.thingspeak.com/update?api_key="+KeyThingSpeak+"&field1={}&field2={}".format(d.temperature(),d.humidity()))              
      
         print("Acessando o ThingSpeak...")
         response = urequests.get(atualizarSite)
